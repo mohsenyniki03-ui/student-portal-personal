@@ -16,10 +16,18 @@ document.addEventListener('DOMContentLoaded', function() {
         
         // Simple validation (in a real app, this would be server-side)
         if (studentId && password) {
+            // Generate student name from ID (simple demo logic)
+            const nameMap = {
+                'S12345': 'John Doe',
+                'S12346': 'Jane Smith',
+                'S12347': 'Bob Johnson'
+            };
+            const studentName = nameMap[studentId] || 'Student ' + studentId;
+            
             // Create user session
             const user = {
                 studentId: studentId,
-                name: 'John Doe',
+                name: studentName,
                 email: studentId.toLowerCase() + '@student.edu',
                 loginTime: new Date().toISOString()
             };

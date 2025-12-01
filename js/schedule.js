@@ -97,26 +97,32 @@ function createScheduleItem(course, time) {
 
 function calculatePosition(timeString) {
     // Parse time string like "9:00 AM - 10:00 AM"
-    const [startTime] = timeString.split(' - ');
-    const [time, period] = startTime.split(' ');
-    const [hours, minutes] = time.split(':').map(Number);
+    const [startTime, endTime] = timeString.split(' - ');
     
-    // Convert to 24-hour format
-    let hour24 = hours;
-    if (period === 'PM' && hours !== 12) {
-        hour24 = hours + 12;
-    } else if (period === 'AM' && hours === 12) {
-        hour24 = 0;
-    }
+    const parseTime = (timeStr) => {
+        const [time, period] = timeStr.trim().split(' ');
+        const [hours, minutes] = time.split(':').map(Number);
+        
+        // Convert to 24-hour format
+        let hour24 = hours;
+        if (period === 'PM' && hours !== 12) {
+            hour24 = hours + 12;
+        } else if (period === 'AM' && hours === 12) {
+            hour24 = 0;
+        }
+        
+        return hour24 + (minutes / 60);
+    };
+    
+    const startHour24 = parseTime(startTime);
+    const endHour24 = parseTime(endTime);
     
     // Calculate position (assuming 8 AM is the start, each hour is 60px)
     const startHour = 8;
     const pixelsPerHour = 60;
     
-    const top = (hour24 - startHour) * pixelsPerHour;
-    
-    // Assume 1.5 hour classes by default
-    const height = pixelsPerHour * 1.5;
+    const top = (startHour24 - startHour) * pixelsPerHour;
+    const height = (endHour24 - startHour24) * pixelsPerHour;
     
     return { top, height };
 }

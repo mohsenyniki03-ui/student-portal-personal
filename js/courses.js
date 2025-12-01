@@ -134,6 +134,31 @@ function checkTimeConflict(newCourseId, enrolledCourseIds) {
     const newCourse = getAllCourses().find(c => c.id === newCourseId);
     if (!newCourse) return null;
     
+    const parseTime = (timeStr) => {
+        const [time, period] = timeStr.trim().split(' ');
+        const [hours, minutes] = time.split(':').map(Number);
+        
+        // Convert to 24-hour format
+        let hour24 = hours;
+        if (period === 'PM' && hours !== 12) {
+            hour24 = hours + 12;
+        } else if (period === 'AM' && hours === 12) {
+            hour24 = 0;
+        }
+        
+        return hour24 * 60 + minutes; // return minutes since midnight
+    };
+    
+    const getTimeRange = (timeString) => {
+        const [startTime, endTime] = timeString.split(' - ');
+        return {
+            start: parseTime(startTime),
+            end: parseTime(endTime)
+        };
+    };
+    
+    const newTimeRange = getTimeRange(newCourse.schedule.time);
+    
     for (const enrolledId of enrolledCourseIds) {
         const enrolledCourse = getAllCourses().find(c => c.id === enrolledId);
         if (!enrolledCourse) continue;
@@ -144,8 +169,11 @@ function checkTimeConflict(newCourseId, enrolledCourseIds) {
         );
         
         if (commonDays.length > 0) {
-            // Simple time conflict check (would need more sophisticated logic for real app)
-            if (newCourse.schedule.time === enrolledCourse.schedule.time) {
+            // Check for time overlap
+            const enrolledTimeRange = getTimeRange(enrolledCourse.schedule.time);
+            
+            // Times conflict if they overlap: new.start < enrolled.end AND new.end > enrolled.start
+            if (newTimeRange.start < enrolledTimeRange.end && newTimeRange.end > enrolledTimeRange.start) {
                 return enrolledCourse;
             }
         }
