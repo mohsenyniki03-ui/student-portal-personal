@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal - Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1>Student Portal</h1>
+            <div class="nav-links">
+                <a href="dashboard.html" class="active">Dashboard</a>
+                <a href="courses.html">Course Catalog</a>
+                <a href="schedule.html">My Schedule</a>
+                <a href="index.html" id="logoutBtn">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="dashboard-content">
+            <div class="welcome-section">
+                <h2>Welcome, <span id="studentName">Student</span>!</h2>
+                <p>Student ID: <span id="displayStudentId"></span></p>
+            </div>
+
+            <div class="dashboard-cards">
+                <div class="card">
+                    <h3>Enrolled Courses</h3>
+                    <p class="card-number" id="enrolledCount">0</p>
+                    <a href="schedule.html" class="card-link">View Schedule →</a>
+                </div>
+                
+                <div class="card">
+                    <h3>Available Courses</h3>
+                    <p class="card-number" id="availableCount">0</p>
+                    <a href="courses.html" class="card-link">Browse Courses →</a>
+                </div>
+                
+                <div class="card">
+                    <h3>Total Credits</h3>
+                    <p class="card-number" id="totalCredits">0</p>
+                </div>
+            </div>
+
+            <div class="quick-actions">
+                <h3>Quick Actions</h3>
+                <div class="action-buttons">
+                    <a href="courses.html" class="btn-primary">Register for Courses</a>
+                    <a href="schedule.html" class="btn-secondary">View My Schedule</a>
+                </div>
+            </div>
+
+            <div class="recent-activity">
+                <h3>Recent Activity</h3>
+                <div id="activityList">
+                    <p class="no-activity">No recent activity</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="data/courses.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

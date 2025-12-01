@@ -1,0 +1,13 @@
+{
+  "name": "student-portal-personal",
+  "version": "1.0.0",
+  "description": "A student portal and course scheduler web application",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx http-server -p 8080 -o",
+    "test": "echo \"No tests specified\" && exit 0"
+  },
+  "keywords": ["student", "portal", "scheduler", "course", "education"],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal - Course Catalog</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1>Student Portal</h1>
+            <div class="nav-links">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="courses.html" class="active">Course Catalog</a>
+                <a href="schedule.html">My Schedule</a>
+                <a href="index.html" id="logoutBtn">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h2>Course Catalog</h2>
+            <p>Browse and register for available courses</p>
+        </div>
+
+        <div class="filters">
+            <div class="filter-group">
+                <label for="departmentFilter">Department:</label>
+                <select id="departmentFilter">
+                    <option value="all">All Departments</option>
+                    <option value="CS">Computer Science</option>
+                    <option value="MATH">Mathematics</option>
+                    <option value="ENG">English</option>
+                    <option value="HIST">History</option>
+                    <option value="BIO">Biology</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label for="searchCourse">Search:</label>
+                <input type="text" id="searchCourse" placeholder="Search courses...">
+            </div>
+        </div>
+
+        <div id="courseList" class="course-list">
+            <!-- Courses will be dynamically loaded here -->
+        </div>
+    </div>
+
+    <script src="data/courses.js"></script>
+    <script src="js/courses.js"></script>
+</body>
+</html>

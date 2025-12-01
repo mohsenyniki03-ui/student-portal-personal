@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portal - My Schedule</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1>Student Portal</h1>
+            <div class="nav-links">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="courses.html">Course Catalog</a>
+                <a href="schedule.html" class="active">My Schedule</a>
+                <a href="index.html" id="logoutBtn">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="page-header">
+            <h2>My Schedule</h2>
+            <p>View and manage your enrolled courses</p>
+        </div>
+
+        <div class="schedule-summary">
+            <div class="summary-item">
+                <strong>Total Courses:</strong> <span id="totalCourses">0</span>
+            </div>
+            <div class="summary-item">
+                <strong>Total Credits:</strong> <span id="totalCreditsSchedule">0</span>
+            </div>
+        </div>
+
+        <div id="scheduleView" class="schedule-view">
+            <div class="week-schedule">
+                <div class="time-column">
+                    <div class="time-header">Time</div>
+                    <div class="time-slot">8:00 AM</div>
+                    <div class="time-slot">9:00 AM</div>
+                    <div class="time-slot">10:00 AM</div>
+                    <div class="time-slot">11:00 AM</div>
+                    <div class="time-slot">12:00 PM</div>
+                    <div class="time-slot">1:00 PM</div>
+                    <div class="time-slot">2:00 PM</div>
+                    <div class="time-slot">3:00 PM</div>
+                    <div class="time-slot">4:00 PM</div>
+                    <div class="time-slot">5:00 PM</div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">Monday</div>
+                    <div class="day-slots" id="monday-slots"></div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">Tuesday</div>
+                    <div class="day-slots" id="tuesday-slots"></div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">Wednesday</div>
+                    <div class="day-slots" id="wednesday-slots"></div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">Thursday</div>
+                    <div class="day-slots" id="thursday-slots"></div>
+                </div>
+                <div class="day-column">
+                    <div class="day-header">Friday</div>
+                    <div class="day-slots" id="friday-slots"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="enrolled-courses">
+            <h3>Enrolled Courses</h3>
+            <div id="enrolledCoursesList"></div>
+        </div>
+    </div>
+
+    <script src="data/courses.js"></script>
+    <script src="js/schedule.js"></script>
+</body>
+</html>
